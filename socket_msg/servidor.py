@@ -38,6 +38,10 @@ def conectado():
 			mensagem = conexao.recv(1024).decode()
 
 			resposta = "[" + nome_cliente + "]: " + mensagem
+			
+			if len(conexoes) == 1 and mensagem != "exit":
+				print("  >", resposta)
+				print("  NOTA: Conecte mais clientes para iniciar o chat!\n")
 
 			for con in conexoes:
 				if con != conexao:
@@ -54,6 +58,9 @@ def conectado():
 		conexao.close()
 
 	else:
+		print(" ╔══════════════════════════╗")
+		print(" ║   SERVIDOR FORA DO AR    ║")
+		print(" ╚══════════════════════════╝")
 		conexao.close()
 
 t = th.Thread(target=conectado)

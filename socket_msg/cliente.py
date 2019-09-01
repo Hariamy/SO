@@ -51,14 +51,18 @@ try:
 	print("\n ╔═════════════════════════════╗")
 	print(" ║     ENVIE SUA MENSAGEM      ║")
 	print(" ║   Para sair digite: exit    ║")
-	print(" ╚═════════════════════════════╝")
+	print(" ╚═════════════════════════════╝\n")
 
 	while mensagem != "exit":
 		TCP.send(mensagem.encode())
 		mensagem = input("  > ")
 
-
 	TCP.send(mensagem.encode())
+
+	print("\n ╔═════════════════════════════╗")
+	print(" ║  DESCONECTADO DO SERVIDOR   ║")
+	print(" ╚═════════════════════════════╝")
+
 except ConnectionRefusedError:
 	print("\n  > Servidor fora do ar!")
 
